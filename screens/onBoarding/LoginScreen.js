@@ -1,14 +1,17 @@
-import React, { useState } from "react";
-import { Button, Text, TouchableOpacity } from "react-native";
+import React, { useContext, useState } from "react";
+import { Alert, Text, TouchableOpacity } from "react-native";
 import AppForm from "../../components/form/AppForm";
 import AppFormField from "../../components/form/AppFormField";
 import { ValidationLogin } from "../../components/form/validations/ValidationLogin";
 import SubmitButton from "../../components/form/SubmitButton";
 import AppView from "../../components/AppView";
+import CRUD from "../../api_fake/CRUD";
+import Context from "../../utils/Context";
 
 const LoginScreen = ({ navigation }) => {
   const [seePassword, setSeePassword] = useState(true);
   const [press, setPress] = useState(false);
+  const { setToken } = useContext(Context);
 
   const seePasswordFunction = () => {
     if (press === false) {
@@ -19,9 +22,13 @@ const LoginScreen = ({ navigation }) => {
       setPress(false);
     }
   };
+
   const sendData = (values) => {
-    console.log(values);
+    CRUD.LoginUser(values.email, values.password).then((e) => {
+      e ? setToken(e) : Alert.alert("El correo o la contraseña no coinciden.");
+    });
   };
+
   return (
     <AppView>
       <Text>LoginScreen</Text>
@@ -38,6 +45,8 @@ const LoginScreen = ({ navigation }) => {
           label="Correo Electronico"
           name="email"
           placeholder="email@ejemplo.com"
+          keyboardType="email-address"
+          textContentType="emailAddress"
         />
         <AppFormField
           autoCapitalize="none"
