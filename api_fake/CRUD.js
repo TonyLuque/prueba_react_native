@@ -1,13 +1,11 @@
 import * as SecureStore from "expo-secure-store";
 
-const keyWord = "token";
-
 const LoginUser = async (email, password) => {
   const newEmail = email.replace("@", "");
   try {
     const user = JSON.parse(await SecureStore.getItemAsync(newEmail));
     if (user.email === email && user.password === password) {
-      return user.email + user.password;
+      return newEmail;
     } else {
       return false;
     }
@@ -27,6 +25,7 @@ const RegisterUser = async (email, values) => {
     await SecureStore.setItemAsync(newEmail, JSON.stringify(values));
   } catch (e) {
     console.log(e);
+    return false;
   }
 };
 

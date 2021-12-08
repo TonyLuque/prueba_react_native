@@ -1,29 +1,22 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { Text } from "react-native";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import IconHome from "../assets/icons/IconHome";
-import IconPhone from "../assets/icons/IconPhone";
-import IconCamera from "../assets/icons/IconCamera";
 import IconSetting from "../assets/icons/IconSetting";
 
-const Tab = createBottomTabNavigator();
+import HomeScreen from "../screens/home/HomeScreen";
+import Profile from "../screens/settings/Profile";
 
-const defaultScreen = () => {
-  return (
-    <View>
-      <Text>Naita</Text>
-    </View>
-  );
-};
+const Tab = createBottomTabNavigator();
 
 export default TabNavigator = () => {
   return (
     <Tab.Navigator screenOptions={{ headerShown: false }}>
       <Tab.Screen
         name="home"
-        component={defaultScreen}
+        component={HomeScreen}
         options={{
           tabBarIcon: ({ focused }) =>
             !focused ? (
@@ -36,39 +29,10 @@ export default TabNavigator = () => {
           tabBarLabel: () => false,
         }}
       />
-      <Tab.Screen
-        name="call"
-        component={defaultScreen}
-        options={{
-          tabBarIcon: ({ focused }) =>
-            !focused ? (
-              <IconPhone focus={focused} />
-            ) : (
-              <Text style={{ marginBottom: 0 }} primary>
-                Llamar
-              </Text>
-            ),
-          tabBarLabel: () => false,
-        }}
-      />
-      <Tab.Screen
-        name="report"
-        component={defaultScreen}
-        options={{
-          tabBarIcon: ({ focused }) =>
-            !focused ? (
-              <IconCamera focus={focused} />
-            ) : (
-              <Text style={{ marginBottom: 0 }} primary>
-                Denunciar
-              </Text>
-            ),
-          tabBarLabel: () => false,
-        }}
-      />
+
       <Tab.Screen
         name="settings"
-        component={defaultScreen}
+        component={Profile}
         options={{
           tabBarIcon: ({ focused }) =>
             !focused ? (
