@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Text } from "react-native";
+import { Button, Text, TouchableOpacity } from "react-native";
 import AppForm from "../../components/form/AppForm";
 import AppFormField from "../../components/form/AppFormField";
 import { ValidationLogin } from "../../components/form/validations/ValidationLogin";
@@ -35,11 +35,13 @@ const LoginScreen = ({ navigation }) => {
       >
         <AppFormField
           autoCapitalize="none"
+          label="Correo Electronico"
           name="email"
           placeholder="email@ejemplo.com"
         />
         <AppFormField
           autoCapitalize="none"
+          label="Contraseña"
           name="password"
           textContentType="password"
           seeEye
@@ -49,10 +51,11 @@ const LoginScreen = ({ navigation }) => {
         />
         <SubmitButton title="Iniciar sesión" />
       </AppForm>
-      <Button
-        title="Registrase"
+      <TouchableOpacity
         onPress={() => navigation.navigate("registrationScreen")}
-      />
+      >
+        <Text>No tienes cuenta. ¡ Crea una ! </Text>
+      </TouchableOpacity>
     </AppView>
   );
 };

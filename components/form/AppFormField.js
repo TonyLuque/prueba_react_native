@@ -3,9 +3,11 @@ import { useFormikContext } from "formik";
 
 import AppTextInput from "./AppTextInput";
 import AppErrorMessage from "./AppErrorMessage";
+import { StyleSheet, Text, View } from "react-native";
 
 function AppFormField({
   name,
+  label,
   width,
   textArea,
   typeDataHook,
@@ -25,7 +27,8 @@ function AppFormField({
   }, [valueToShow]);
 
   return (
-    <>
+    <View style={styles.container}>
+      {label ? <Text style={styles.label}>{label}</Text> : null}
       {typeDataHook ? (
         <AppTextInput
           onBlur={() => setFieldTouched(name)}
@@ -55,8 +58,17 @@ function AppFormField({
         />
       )}
       <AppErrorMessage error={errors[name]} visible={touched[name]} />
-    </>
+    </View>
   );
 }
 
 export default AppFormField;
+
+const styles = StyleSheet.create({
+  container: {
+    width: "100%",
+  },
+  label: {
+    alignSelf: "flex-start",
+  },
+});

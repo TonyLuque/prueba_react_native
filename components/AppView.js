@@ -1,8 +1,8 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 
-const AppView = ({ children }) => {
-  return <View style={styles.container}>{children}</View>;
+const AppView = ({ children, style }) => {
+  return <View style={[styles.container, style]}>{children}</View>;
 };
 
 export default AppView;
