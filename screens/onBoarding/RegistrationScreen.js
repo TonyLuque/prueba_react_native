@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { ScrollView, Text, KeyboardAvoidingView, Alert } from "react-native";
+import {
+  ScrollView,
+  Text,
+  KeyboardAvoidingView,
+  Alert,
+  StyleSheet,
+} from "react-native";
 import CRUD from "../../api_fake/CRUD";
 import AppView from "../../components/AppView";
 import AppForm from "../../components/form/AppForm";
@@ -22,7 +28,6 @@ const RegistrationScreen = ({ navigation }) => {
   };
 
   const sendData = (values) => {
-    console.log("------------");
     CRUD.RegisterUser(values.email, values).then((e) =>
       !e
         ? Alert.alert("El usuario ya existe.")
@@ -31,7 +36,7 @@ const RegistrationScreen = ({ navigation }) => {
   };
   return (
     <AppView>
-      <Text>Bienvenido</Text>
+      <Text style={styles.text}>Bienvenido</Text>
       <ScrollView>
         <KeyboardAvoidingView>
           <AppForm
@@ -105,3 +110,7 @@ const RegistrationScreen = ({ navigation }) => {
 };
 
 export default RegistrationScreen;
+
+const styles = StyleSheet.create({
+  text: { fontSize: 20, textAlign: "center", marginBottom: 32 },
+});

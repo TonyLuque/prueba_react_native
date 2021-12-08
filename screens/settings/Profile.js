@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Text } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import CRUD from "../../api_fake/CRUD";
 import AppView from "../../components/AppView";
 import AppForm from "../../components/form/AppForm";
@@ -25,7 +25,7 @@ const Profile = ({ navigation }) => {
 
   return (
     <AppView>
-      <Text>Puedes actualizar tus datos</Text>
+      <Text style={styles.text}>Puedes actualizar tus datos</Text>
 
       <AppForm
         initialValues={{
@@ -55,3 +55,6 @@ const Profile = ({ navigation }) => {
 };
 
 export default Profile;
+const styles = StyleSheet.create({
+  text: { fontSize: 20, textAlign: "center", marginBottom: 32 },
+});

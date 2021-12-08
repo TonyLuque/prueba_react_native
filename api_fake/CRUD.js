@@ -23,6 +23,7 @@ const RegisterUser = async (email, values) => {
       return false;
     }
     await SecureStore.setItemAsync(newEmail, JSON.stringify(values));
+    return true;
   } catch (e) {
     console.log(e);
     return false;

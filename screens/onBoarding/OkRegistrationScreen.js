@@ -1,12 +1,13 @@
 import React from "react";
-import { Button, Text } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import AppView from "../../components/AppView";
+import PrimaryButton from "../../components/PrimaryButton";
 
 const OkRegistrationScreen = ({ navigation }) => {
   return (
     <AppView>
-      <Text>OkRegistrationScreen</Text>
-      <Button
+      <Text style={styles.text}>Te registraste con exito</Text>
+      <PrimaryButton
         title="Volver al login"
         onPress={() => navigation.navigate("loginScreen")}
       />
@@ -15,3 +16,7 @@ const OkRegistrationScreen = ({ navigation }) => {
 };
 
 export default OkRegistrationScreen;
+
+const styles = StyleSheet.create({
+  text: { fontSize: 20, textAlign: "center", marginBottom: 32 },
+});

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Alert, Text, TouchableOpacity } from "react-native";
+import { Alert, StyleSheet, Text, TouchableOpacity } from "react-native";
 import AppForm from "../../components/form/AppForm";
 import AppFormField from "../../components/form/AppFormField";
 import { ValidationLogin } from "../../components/form/validations/ValidationLogin";
@@ -37,7 +37,7 @@ const LoginScreen = ({ navigation }) => {
 
   return (
     <AppView>
-      <Text>LoginScreen</Text>
+      <Text style={styles.text}>Inicia sesión</Text>
       <AppForm
         initialValues={{
           email: "",
@@ -69,10 +69,17 @@ const LoginScreen = ({ navigation }) => {
       <TouchableOpacity
         onPress={() => navigation.navigate("registrationScreen")}
       >
-        <Text>No tienes cuenta. ¡ Crea una ! </Text>
+        <Text>
+          No tienes cuenta. <Text style={styles.span}>¡ Crea una ! </Text>
+        </Text>
       </TouchableOpacity>
     </AppView>
   );
 };
 
 export default LoginScreen;
+
+const styles = StyleSheet.create({
+  text: { fontSize: 20, textAlign: "center", marginBottom: 32 },
+  span: { color: "blue" },
+});

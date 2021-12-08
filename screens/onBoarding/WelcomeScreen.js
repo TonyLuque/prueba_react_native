@@ -1,12 +1,13 @@
 import React from "react";
-import { Button, Text } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import AppView from "../../components/AppView";
+import PrimaryButton from "../../components/PrimaryButton";
 
 const WelcomeScreen = ({ navigation }) => {
   return (
     <AppView>
-      <Text>WelcomeScreen</Text>
-      <Button
+      <Text style={styles.text}>Bienvenido a esta app</Text>
+      <PrimaryButton
         title="Siguiente"
         onPress={() => navigation.navigate("loginScreen")}
       />
@@ -15,3 +16,7 @@ const WelcomeScreen = ({ navigation }) => {
 };
 
 export default WelcomeScreen;
+
+const styles = StyleSheet.create({
+  text: { fontSize: 20, textAlign: "center", marginBottom: 32 },
+});
