@@ -1,15 +1,16 @@
 import React from "react";
-import { Button, Text, View } from "react-native";
+import { Button, Text } from "react-native";
+import AppView from "../../components/AppView";
 
 const WelcomeScreen = ({ navigation }) => {
   return (
-    <View>
+    <AppView>
       <Text>WelcomeScreen</Text>
       <Button
         title="Siguiente"
         onPress={() => navigation.navigate("loginScreen")}
       />
-    </View>
+    </AppView>
   );
 };
 

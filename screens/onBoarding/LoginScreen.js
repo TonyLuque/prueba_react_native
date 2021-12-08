@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Button, Text, View } from "react-native";
+import { Button, Text } from "react-native";
 import AppForm from "../../components/form/AppForm";
 import AppFormField from "../../components/form/AppFormField";
 import { ValidationLogin } from "../../components/form/validations/ValidationLogin";
 import SubmitButton from "../../components/form/SubmitButton";
+import AppView from "../../components/AppView";
 
 const LoginScreen = ({ navigation }) => {
   const [seePassword, setSeePassword] = useState(true);
@@ -22,7 +23,7 @@ const LoginScreen = ({ navigation }) => {
     console.log(values);
   };
   return (
-    <View>
+    <AppView>
       <Text>LoginScreen</Text>
       <AppForm
         initialValues={{
@@ -52,7 +53,7 @@ const LoginScreen = ({ navigation }) => {
         title="Registrase"
         onPress={() => navigation.navigate("registrationScreen")}
       />
-    </View>
+    </AppView>
   );
 };
 
