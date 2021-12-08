@@ -7,6 +7,7 @@ import SubmitButton from "../../components/form/SubmitButton";
 import AppView from "../../components/AppView";
 import CRUD from "../../api_fake/CRUD";
 import Context from "../../utils/Context";
+import Storage from "../../utils/Storage";
 
 const LoginScreen = ({ navigation }) => {
   const [seePassword, setSeePassword] = useState(true);
@@ -25,7 +26,12 @@ const LoginScreen = ({ navigation }) => {
 
   const sendData = (values) => {
     CRUD.LoginUser(values.email, values.password).then((e) => {
-      e ? setToken(e) : Alert.alert("El correo o la contraseña no coinciden.");
+      if (e) {
+        setToken(e);
+        Storage.SetToken(e);
+      } else {
+        Alert.alert("El correo o la contraseña no coinciden.");
+      }
     });
   };
 

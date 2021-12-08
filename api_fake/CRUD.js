@@ -29,7 +29,32 @@ const RegisterUser = async (email, values) => {
   }
 };
 
+const GetProfile = async (token) => {
+  try {
+    const user = JSON.parse(await SecureStore.getItemAsync(token));
+    return user;
+  } catch (e) {
+    console.log(e);
+    return false;
+  }
+};
+
+const UpdateProfile = async (token, values) => {
+  try {
+    let user = JSON.parse(await SecureStore.getItemAsync(token));
+    user.firstName = values.firstName;
+    user.phone = values.phone;
+    await SecureStore.setItemAsync(token, JSON.stringify(user));
+    return user;
+  } catch (e) {
+    console.log(e);
+    return false;
+  }
+};
+
 export default {
   LoginUser,
   RegisterUser,
+  GetProfile,
+  UpdateProfile,
 };

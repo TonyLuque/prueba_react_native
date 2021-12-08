@@ -10,9 +10,9 @@ const GetToken = async () => {
   }
 };
 
-const SetToken = async () => {
+const SetToken = async (token) => {
   try {
-    await SecureStore.setItemAsync(keyWord, "true");
+    await SecureStore.setItemAsync(keyWord, token);
   } catch (e) {
     console.log(e);
   }
