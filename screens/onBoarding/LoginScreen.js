@@ -32,8 +32,13 @@ const LoginScreen = ({ navigation }) => {
         onSubmit={sendData}
         validationSchema={ValidationLogin}
       >
-        <AppFormField name="email" placeholder="email@ejemplo.com" />
         <AppFormField
+          autoCapitalize="none"
+          name="email"
+          placeholder="email@ejemplo.com"
+        />
+        <AppFormField
+          autoCapitalize="none"
           name="password"
           textContentType="password"
           seeEye
